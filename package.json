@@ -37,6 +37,7 @@
     "dotenv": "17.2.1",
     "drizzle-orm": "0.44.3",
     "framer-motion": "11.5.4",
+    "hono": "4.10.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "5.0.1",
