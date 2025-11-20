@@ -11,6 +11,7 @@ export const profilesTable = pgTable('profiles_table', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   id: serial('id').primaryKey(),
   isActive: boolean('is_active').notNull().default(true),
+  kudos: integer('kudos').notNull().default(0),
   updatedAt: timestamp('updated_at')
     .notNull()
     .$onUpdate(() => new Date()),

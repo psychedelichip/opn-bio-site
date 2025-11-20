@@ -29,7 +29,7 @@ export class ProfileDrizzleRepo implements ProfileRepository {
     return record ? ProfileMapper.toDomain(record) : null;
   }
 
-  async incrementVisit(username: string): Promise<number> {
+  async incrementVisits(username: string): Promise<number> {
     const [updated] = await db
       .update(profilesTable)
       .set({ isActive: true, visits: sql`${profilesTable.visits} + 1` })
@@ -40,6 +40,19 @@ export class ProfileDrizzleRepo implements ProfileRepository {
       throw new Error(`Profile with username ${username} not found`);
 
     return updated.visits;
+  }
+
+  async incrementKudos(username: string): Promise<number> {
+    const [updated] = await db
+      .update(profilesTable)
+      .set({ kudos: sql`${profilesTable.kudos} + 1` })
+      .where(eq(profilesTable.username, username))
+      .returning({ kudos: profilesTable.kudos });
+
+    if (!updated)
+      throw new Error(`Profile with username ${username} not found`);
+
+    return updated.kudos;
   }
 
   async update(profile: Profile): Promise<Profile> {

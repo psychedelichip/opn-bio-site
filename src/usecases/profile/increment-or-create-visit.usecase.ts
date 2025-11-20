@@ -15,7 +15,7 @@ export class IncrementOrCreateVisit {
 
       await this.repo.create(newProfile);
     } else {
-      await this.repo.incrementVisit(username);
+      await this.repo.incrementVisits(username);
     }
   }
 }
