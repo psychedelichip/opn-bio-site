@@ -1,1 +1,0 @@
-ALTER TABLE "profiles_table" ADD COLUMN "kudos" integer DEFAULT 0 NOT NULL;

@@ -1,15 +1,7 @@
 ---
 import Layout from '@/layouts/layout.astro';
 import { Profile } from '@/components/profile';
-
-import { ResolveSourceService } from '@/services/resolve-source.service';
-import { GetCachedSource } from '@/usecases/source/get-cached-source.usecase';
-import { IncrementOrCreateVisit } from '@/usecases/profile/increment-or-create-visit.usecase';
-import { MarkProfileInactive } from '@/usecases/profile/mark-profile-inactive.usecase';
-import { CacheSource } from '@/usecases/source/cache-source.usecase';
-import { FetchSource } from '@/usecases/source/fetch-source.usecase';
-import { ProfileDrizzleRepo } from '@/infrastructure/profile-drizzzle.repository';
-import { SourceRedisRepo } from '@/infrastructure/source-redis.repository';
+import { getSource } from '@/lib/source';
 
 const username = Astro.params.username?.toLowerCase();
 
@@ -17,24 +9,7 @@ if (!username) {
   return Astro.rewrite('/404');
 }
 
-const profileDrizzleRepo = new ProfileDrizzleRepo();
-const sourceRedisRepo = new SourceRedisRepo();
-
-const getCachedSource = new GetCachedSource(sourceRedisRepo);
-const incrementOrCreateVisit = new IncrementOrCreateVisit(profileDrizzleRepo);
-const markProfileInactive = new MarkProfileInactive(profileDrizzleRepo);
-const cacheSource = new CacheSource(sourceRedisRepo);
-const fetchSource = new FetchSource();
-
-const resolveSource = new ResolveSourceService(
-  getCachedSource,
-  incrementOrCreateVisit,
-  markProfileInactive,
-  cacheSource,
-  fetchSource,
-);
-
-const source = await resolveSource.execute(username);
+const source = await getSource(username);
 
 if (!source) {
   return Astro.rewrite('/404');
