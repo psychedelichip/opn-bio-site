@@ -1,32 +1,21 @@
 {
   "version": 1,
-  "name": "Your Name",
-  "description": "A Short Description",
+  "name": "Murat Alpay",
+  "description": "Design Engineer",
   "sections": [
     {
       "title": "About",
       "type": "text",
-      "content": "Buraya kısa bir tanıtım metni gelecek. Yazılım geliştirme ve tasarım üzerine çalışıyorum."
+      "content": "human /ˈhjuːmən/ noun: a person, nothing more, nothing less. I design calm, clear interfaces for real humans.\n\nMurat Alpay is a product designer evolving into a design engineer based in Istanbul, Turkey, currently working as a freelancer."
     },
     {
       "title": "Experience",
       "type": "list",
       "items": [
         {
-          "title": "Company One",
-          "description": "Software Engineer.",
-          "url": "https://example.com",
-          "date": "2025–Present"
-        }
-      ]
-    },
-    {
-      "title": "Socials",
-      "type": "links",
-      "links": [
-        {
-          "title": "X",
-          "url": "https://x.com/username"
+          "title": "Freelance Designer",
+          "description": "Product design and design engineering.",
+          "date": "2024–Present"
         }
       ]
     }

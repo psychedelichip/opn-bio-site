@@ -147,17 +147,25 @@
 .header {
   padding: 40px 0 60px;
 
+  & .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    object-fit: cover;
+  }
+
   & .name {
     font-size: 0.875rem; /* 14px */
     font-weight: 500; /* Medium */
-    color: var(--color-foreground);
+    color: #FFFFFF; /* Başlık beyaz */
   }
 
   & .description {
     margin-top: 4px;
     font-size: 0.875rem; /* 14px */
     font-weight: 400; /* Regular */
-    color: var(--color-foreground-subtle);
+    color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
   }
 
   & .profileLink {
@@ -250,6 +258,7 @@
     margin-bottom: 4px; /* 4px boşluk */
     font-size: 0.875rem; /* 14px */
     font-weight: 500; /* Medium */
+    color: #FFFFFF; /* Başlık beyaz */
   }
 
   & > .content {
@@ -257,7 +266,7 @@
       font-size: 0.875rem; /* 14px */
       font-weight: 400; /* Regular */
       line-height: 1.6;
-      color: var(--color-foreground-subtle);
+      color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
   }
 }
@@ -294,7 +303,7 @@
     & .title {
       font-size: 0.875rem; /* 14px */
       font-weight: 500; /* Medium */
-      color: var(--color-foreground);
+      color: #FFFFFF; /* Başlık beyaz */
 
       &a {
         text-decoration: underline;
@@ -326,7 +335,7 @@
       margin-top: 4px;
       font-size: 0.875rem; /* 14px */
       font-weight: 400; /* Regular */
-      color: var(--color-foreground-subtler);
+      color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
 
     & .description {
@@ -334,7 +343,7 @@
       font-size: 0.875rem; /* 14px */
       font-weight: 400; /* Regular */
       line-height: 1.6;
-      color: var(--color-foreground-subtle);
+      color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
   }
 }
