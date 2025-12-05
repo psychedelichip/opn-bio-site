@@ -165,12 +165,12 @@
     position: relative;
     display: inline-block;
     padding: 6px 12px;
-    margin-top: 20px;
+    margin-top: 16px; /* 16px spacing */
     font-family: var(--font-mono);
     font-size: var(--font-2xsm);
     color: var(--color-foreground-subtler);
     text-decoration: none;
-    border: 1px solid var(--color-neutral-200);
+    background: rgba(255, 255, 255, 0.1); /* Beyaz %10 opacity */
     border-radius: 1000px;
     transition: 0.2s;
 
