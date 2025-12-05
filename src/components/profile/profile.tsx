@@ -136,14 +136,6 @@ export function Profile({ source, username }: ProfileProps) {
       variants={containerVariants}
     >
       <Container>
-        <motion.div className={styles.topBar} variants={itemVariants}>
-          <img 
-            src="/avatar.jpg" 
-            alt={profile.name}
-            className={styles.logo}
-          />
-        </motion.div>
-
         <motion.header className={styles.header} variants={itemVariants}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.description}>{profile.description}</p>
