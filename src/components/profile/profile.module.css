@@ -170,7 +170,8 @@
     font-size: var(--font-2xsm);
     color: var(--color-foreground-subtler);
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.1); /* Beyaz %10 opacity */
+    border: 1px solid rgba(255, 255, 255, 0.10); /* Border %10 opacity */
+    background: rgba(255, 255, 255, 0.06); /* Background %6 opacity */
     border-radius: 1000px;
     transition: 0.2s;
 
