@@ -148,15 +148,16 @@
   padding: 40px 0 60px;
 
   & .name {
-    font-weight: 500;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500; /* Medium */
     color: var(--color-foreground);
-    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 
   & .description {
     margin-top: 4px;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 400; /* Regular */
     color: var(--color-foreground-subtle);
-    font-size: clamp(0.875rem, 3vw, 1rem);
   }
 
   & .profileLink {
@@ -246,13 +247,15 @@
     display: flex;
     column-gap: 20px;
     align-items: center;
-    margin-bottom: 32px;
-    font-weight: 500;
-    font-size: clamp(1rem, 4vw, 1.25rem);
+    margin-bottom: 4px; /* 4px boşluk */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500; /* Medium */
   }
 
   & > .content {
     & .text {
+      font-size: 0.875rem; /* 14px */
+      font-weight: 400; /* Regular */
       line-height: 1.6;
       color: var(--color-foreground-subtle);
     }
@@ -289,7 +292,8 @@
     }
 
     & .title {
-      font-weight: 400;
+      font-size: 0.875rem; /* 14px */
+      font-weight: 500; /* Medium */
       color: var(--color-foreground);
 
       &a {
@@ -320,12 +324,15 @@
 
     & .date {
       margin-top: 4px;
-      font-size: var(--font-xsm);
+      font-size: 0.875rem; /* 14px */
+      font-weight: 400; /* Regular */
       color: var(--color-foreground-subtler);
     }
 
     & .description {
       margin-top: 4px;
+      font-size: 0.875rem; /* 14px */
+      font-weight: 400; /* Regular */
       line-height: 1.6;
       color: var(--color-foreground-subtle);
     }
