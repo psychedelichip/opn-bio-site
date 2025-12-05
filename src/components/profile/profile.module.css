@@ -161,50 +161,33 @@
     color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
   }
 
-  & .profileLink {
-    position: relative;
-    display: inline-block;
-    padding: 6px 12px;
-    margin-top: 8px; /* 8px spacing */
-    margin-bottom: 32px; /* Section arası boşluk */
-    font-family: var(--font-mono);
-    font-size: var(--font-2xsm);
-    color: var(--color-foreground-subtler);
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.10); /* Border %10 opacity */
-    background: rgba(255, 255, 255, 0.06); /* Background %6 opacity */
-    border-radius: 1000px;
-    transition: 0.2s;
+}
 
-    &:active {
-      transform: scale(0.95);
-    }
+.profileLink {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 8px; /* About ile arası 8px */
+  margin-bottom: 32px; /* Experience ile arası */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.10); /* Border %10 opacity */
+  background: rgba(255, 255, 255, 0.06); /* Background %6 opacity */
+  border-radius: 1000px;
+  transition: 0.2s;
 
-    &::before {
-      position: absolute;
-      bottom: -1px;
-      left: 50%;
-      width: 70%;
-      height: 1px;
-      content: '';
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--color-neutral-500),
-        transparent
-      );
-      opacity: 0;
-      transition: 0.2s;
-      transform: translateX(-50%);
-    }
+  &:active {
+    transform: scale(0.95);
+  }
 
-    &:hover::before {
-      opacity: 1;
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.10);
+  }
 
-    & strong {
-      color: var(--color-foreground-subtle);
-    }
+  & strong {
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
