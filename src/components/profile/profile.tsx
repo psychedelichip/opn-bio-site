@@ -138,23 +138,21 @@ export function Profile({ source, username }: ProfileProps) {
       <Container>
         <motion.div className={styles.topBar} variants={itemVariants}>
           <div className={styles.logo} />
-          <div className={styles.controls}>
-            <QRCodeModal
-              url={`https://opn.bio/@${username}`}
-              title={`${profile.name} — OPN`}
-            />
-            <ShareButton
-              url={`https://opn.bio/@${username}`}
-              title={`${profile.name} — OPN`}
-            />
-            <ThemeSwitcher />
-            <LanguageSwitcher />
-          </div>
         </motion.div>
 
         <motion.header className={styles.header} variants={itemVariants}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.description}>{profile.description}</p>
+
+          <motion.a
+            className={styles.profileLink}
+            href={`https://opn.bio/@${username}`}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          >
+            opn.bio/<strong>@{username}</strong>
+          </motion.a>
         </motion.header>
         <motion.main variants={itemVariants}>
           {profile.sections &&
@@ -199,6 +197,9 @@ export function Profile({ source, username }: ProfileProps) {
               </Section>
             ))}
         </motion.main>
+        <motion.footer className={styles.footer} variants={itemVariants}>
+          {t.profile.createdUsing} <a href="https://opn.bio">OPN</a>.
+        </motion.footer>
       </Container>
     </motion.div>
   );
