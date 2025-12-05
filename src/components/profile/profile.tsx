@@ -1,12 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import { MdArrowOutward } from 'react-icons/md';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Container } from '../container';
+import { LanguageSwitcher } from '../language-switcher';
+import { ThemeSwitcher } from '../theme-switcher';
+import { SocialLink } from '../social-link';
+import { ShareButton } from '../share-button';
+import { QRCodeModal } from '../qr-code-modal';
 import type { Profile as IProfile } from '@/types/profile';
 
 import styles from './profile.module.css';
 import { cn } from '@/helpers/styles';
 import { ProfileSchema } from '@/validators/profile';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface ProfileProps {
   source: string;
@@ -14,6 +21,7 @@ interface ProfileProps {
 }
 
 export function Profile({ source, username }: ProfileProps) {
+  const { t } = useTranslation();
   const [profile, setProfile] = useState<IProfile | null>(null);
   const [errors, setErrors] = useState<
     Array<{ message: string; path: string }>
@@ -23,7 +31,7 @@ export function Profile({ source, username }: ProfileProps) {
   const fetchProfile = useCallback(async () => {
     const res = await fetch(source);
 
-    if (!res.ok) return setError('Profile not found.');
+    if (!res.ok) return setError(t.profile.notFound);
 
     const data = await res.json();
 
@@ -39,13 +47,13 @@ export function Profile({ source, username }: ProfileProps) {
     } else {
       setProfile(parsed.data);
     }
-  }, [source]);
+  }, [source, t]);
 
   useEffect(() => {
     fetchProfile().catch(() =>
-      setError('Something went wrong. The JSON file might be invalid.'),
+      setError(t.profile.invalidJson),
     );
-  }, [fetchProfile]);
+  }, [fetchProfile, t]);
 
   useEffect(() => {
     if (profile?.name) {
@@ -61,7 +69,11 @@ export function Profile({ source, username }: ProfileProps) {
     return (
       <div className={styles.singleError}>
         <Container>
-          <p className={styles.errorText}>Error: {error}</p>
+          <div className={styles.errorControls}>
+            <ThemeSwitcher />
+            <LanguageSwitcher />
+          </div>
+          <p className={styles.errorText}>{t.profile.errorPrefix} {error}</p>
         </Container>
       </div>
     );
@@ -70,8 +82,12 @@ export function Profile({ source, username }: ProfileProps) {
   if (errors.length > 0) {
     return (
       <Container>
+        <div className={styles.errorControls}>
+          <ThemeSwitcher />
+          <LanguageSwitcher />
+        </div>
         <div className={styles.errors}>
-          <h1 className={styles.title}>Wrong Format:</h1>
+          <h1 className={styles.title}>{t.profile.wrongFormat}</h1>
 
           {errors.map((error, i) => (
             <p className={styles.error} key={i}>
@@ -85,31 +101,65 @@ export function Profile({ source, username }: ProfileProps) {
 
   if (!profile) return null;
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
       className={cn(
         profile.style?.theme === 'light' && styles.light,
         profile.style?.font === 'serif' && styles.serif,
       )}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
     >
       <Container>
-        <div className={styles.logo} />
+        <motion.div className={styles.topBar} variants={itemVariants}>
+          <div className={styles.logo} />
+          <div className={styles.controls}>
+            <QRCodeModal
+              url={`https://opn.bio/@${username}`}
+              title={`${profile.name} — OPN`}
+            />
+            <ShareButton
+              url={`https://opn.bio/@${username}`}
+              title={`${profile.name} — OPN`}
+            />
+            <ThemeSwitcher />
+            <LanguageSwitcher />
+          </div>
+        </motion.div>
 
-        <header className={styles.header}>
+        <motion.header className={styles.header} variants={itemVariants}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.description}>{profile.description}</p>
-
-          <a
-            className={styles.profileLink}
-            href={`https://opn.bio/@${username}`}
-          >
-            opn.bio/<strong>@{username}</strong>
-          </a>
-        </header>
-        <main>
+        </motion.header>
+        <motion.main variants={itemVariants}>
           {profile.sections &&
             profile.sections.map((section, index) => (
-              <Section key={index} title={section.title}>
+              <Section key={index} title={section.title} variants={itemVariants}>
                 {section.type === 'list' ? (
                   <div className={styles.items}>
                     {section.items.map((item, index) => (
@@ -142,36 +192,33 @@ export function Profile({ source, username }: ProfileProps) {
                 ) : section.type === 'links' ? (
                   <div className={cn(styles.socials)}>
                     {section.links.map((link, index) => (
-                      <a href={link.url} key={index}>
-                        {link.title}
-                      </a>
+                      <SocialLink key={index} url={link.url} title={link.title} />
                     ))}
                   </div>
                 ) : null}
               </Section>
             ))}
-        </main>
-        <footer className={styles.footer}>
-          Created using <a href="https://opn.bio">OPN</a>.
-        </footer>
+        </motion.main>
       </Container>
-    </div>
+    </motion.div>
   );
 }
 
 function Section({
   children,
   title,
+  variants,
 }: {
   children: React.ReactNode;
   title: string;
+  variants?: any;
 }) {
   return (
-    <section className={styles.section}>
+    <motion.section className={styles.section} variants={variants}>
       <h2 className={styles.title}>
         {title} <div />
       </h2>
       <div className={styles.content}>{children}</div>
-    </section>
+    </motion.section>
   );
 }

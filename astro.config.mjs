@@ -9,4 +9,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   output: 'server',
   site: 'https://opn.bio',
+  devToolbar: {
+    enabled: false,
+  },
 });

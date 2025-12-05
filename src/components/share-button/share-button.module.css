@@ -1,0 +1,92 @@
+.container {
+  position: relative;
+}
+
+.mainButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  color: var(--color-foreground);
+  cursor: pointer;
+  background: var(--color-neutral-100);
+  border: none;
+  border-radius: 50%;
+  box-shadow: inset 0 -1px 0 var(--color-neutral-300);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mainButton:hover {
+  background: var(--color-neutral-200);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+  padding: 8px;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: var(--font-sm);
+  color: var(--color-foreground);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menuItem:hover {
+  background: var(--color-neutral-100);
+}
+
+.menuItem svg {
+  font-size: 16px;
+  color: var(--color-foreground-subtle);
+}
+
+.menuItem span {
+  flex: 1;
+}
+
+@media (max-width: 640px) {
+  .mainButton {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .menu {
+    min-width: 120px;
+  }
+
+  .menuItem {
+    padding: 6px 10px;
+    font-size: var(--font-xsm);
+  }
+
+  .menuItem svg {
+    font-size: 14px;
+  }
+}
