@@ -158,40 +158,42 @@ export function Profile({ source, username }: ProfileProps) {
         </motion.header>
         <motion.main variants={itemVariants}>
           {profile.sections &&
-            profile.sections.map((section, index) => (
-              <Section key={index} title={section.title} variants={itemVariants}>
-                {section.type === 'list' ? (
-                  <div className={styles.items}>
-                    {section.items.map((item, index) => (
-                      <div className={styles.item} key={index}>
-                        {item.url ? (
-                          <a className={styles.title} href={item.url}>
-                            {item.title}
-                            <span>
-                              <MdArrowOutward />
-                            </span>
-                          </a>
-                        ) : (
-                          <p className={styles.title}>{item.title}</p>
-                        )}
+            profile.sections
+              .filter((section) => section.type !== 'links')
+              .map((section, index) => (
+                <Section key={index} title={section.title} variants={itemVariants}>
+                  {section.type === 'list' ? (
+                    <div className={styles.items}>
+                      {section.items.map((item, index) => (
+                        <div className={styles.item} key={index}>
+                          {item.url ? (
+                            <a className={styles.title} href={item.url}>
+                              {item.title}
+                              <span>
+                                <MdArrowOutward />
+                              </span>
+                            </a>
+                          ) : (
+                            <p className={styles.title}>{item.title}</p>
+                          )}
 
-                        {item.description && (
-                          <p className={styles.description}>
-                            {item.description}
-                          </p>
-                        )}
+                          {item.description && (
+                            <p className={styles.description}>
+                              {item.description}
+                            </p>
+                          )}
 
-                        {item.date && (
-                          <p className={styles.date}>({item.date})</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : section.type === 'text' ? (
-                  <p className={styles.text}>{section.content}</p>
-                ) : null}
-              </Section>
-            ))}
+                          {item.date && (
+                            <p className={styles.date}>({item.date})</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : section.type === 'text' ? (
+                    <p className={styles.text}>{section.content}</p>
+                  ) : null}
+                </Section>
+              ))}
         </motion.main>
       </Container>
     </motion.div>

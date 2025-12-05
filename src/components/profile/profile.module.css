@@ -240,7 +240,7 @@
 
 .section {
   &:not(:last-of-type) {
-    padding-bottom: 80px;
+    padding-bottom: 32px; /* 32px spacing */
   }
 
   & > .title {
@@ -265,11 +265,11 @@
 @media (max-width: 640px) {
   .section {
     &:not(:last-of-type) {
-      padding-bottom: 60px;
+      padding-bottom: 32px; /* 32px spacing */
     }
 
     & > .title {
-      margin-bottom: 24px;
+      margin-bottom: 4px; /* 4px boşluk */
     }
   }
 }
