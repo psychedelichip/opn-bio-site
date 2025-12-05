@@ -146,12 +146,14 @@ export function Profile({ source, username }: ProfileProps) {
 
           <motion.a
             className={styles.profileLink}
-            href={`https://opn.bio/@${username}`}
+            href="https://x.com/imuratalpay"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            opn.bio/<strong>@{username}</strong>
+            x.com/<strong>imuratalpay</strong>
           </motion.a>
         </motion.header>
         <motion.main variants={itemVariants}>
@@ -187,19 +189,10 @@ export function Profile({ source, username }: ProfileProps) {
                   </div>
                 ) : section.type === 'text' ? (
                   <p className={styles.text}>{section.content}</p>
-                ) : section.type === 'links' ? (
-                  <div className={cn(styles.socials)}>
-                    {section.links.map((link, index) => (
-                      <SocialLink key={index} url={link.url} title={link.title} />
-                    ))}
-                  </div>
                 ) : null}
               </Section>
             ))}
         </motion.main>
-        <motion.footer className={styles.footer} variants={itemVariants}>
-          {t.profile.createdUsing} <a href="https://opn.bio">OPN</a>.
-        </motion.footer>
       </Container>
     </motion.div>
   );
