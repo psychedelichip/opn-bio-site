@@ -167,16 +167,16 @@
   position: relative;
   display: inline-block;
   padding: 6px 12px;
-  margin-top: 8px; /* About ile arası 8px */
+  margin-top: 12px; /* About ile arası 12px */
   margin-bottom: 32px; /* Experience ile arası */
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5); /* x.com/ kısmı %50 */
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.10); /* Border %10 opacity */
   background: rgba(255, 255, 255, 0.06); /* Background %6 opacity */
   border-radius: 1000px;
-  transition: 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:active {
     transform: scale(0.95);
@@ -187,7 +187,8 @@
   }
 
   & strong {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8); /* imuratalpay kısmı %80 */
+    font-weight: 500;
   }
 }
 
