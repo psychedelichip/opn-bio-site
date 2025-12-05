@@ -165,7 +165,8 @@
     position: relative;
     display: inline-block;
     padding: 6px 12px;
-    margin-top: 16px; /* 16px spacing */
+    margin-top: 8px; /* 8px spacing */
+    margin-bottom: 32px; /* Section arası boşluk */
     font-family: var(--font-mono);
     font-size: var(--font-2xsm);
     color: var(--color-foreground-subtler);

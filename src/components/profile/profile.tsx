@@ -139,56 +139,59 @@ export function Profile({ source, username }: ProfileProps) {
         <motion.header className={styles.header} variants={itemVariants}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.description}>{profile.description}</p>
-
-          <motion.a
-            className={styles.profileLink}
-            href="https://x.com/imuratalpay"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-          >
-            x.com/<strong>imuratalpay</strong>
-          </motion.a>
         </motion.header>
         <motion.main variants={itemVariants}>
           {profile.sections &&
             profile.sections
               .filter((section) => section.type !== 'links')
               .map((section, index) => (
-                <Section key={index} title={section.title} variants={itemVariants}>
-                  {section.type === 'list' ? (
-                    <div className={styles.items}>
-                      {section.items.map((item, index) => (
-                        <div className={styles.item} key={index}>
-                          {item.url ? (
-                            <a className={styles.title} href={item.url}>
-                              {item.title}
-                              <span>
-                                <MdArrowOutward />
-                              </span>
-                            </a>
-                          ) : (
-                            <p className={styles.title}>{item.title}</p>
-                          )}
+                <>
+                  <Section key={index} title={section.title} variants={itemVariants}>
+                    {section.type === 'list' ? (
+                      <div className={styles.items}>
+                        {section.items.map((item, index) => (
+                          <div className={styles.item} key={index}>
+                            {item.url ? (
+                              <a className={styles.title} href={item.url}>
+                                {item.title}
+                                <span>
+                                  <MdArrowOutward />
+                                </span>
+                              </a>
+                            ) : (
+                              <p className={styles.title}>{item.title}</p>
+                            )}
 
-                          {item.description && (
-                            <p className={styles.description}>
-                              {item.description}
-                            </p>
-                          )}
+                            {item.description && (
+                              <p className={styles.description}>
+                                {item.description}
+                              </p>
+                            )}
 
-                          {item.date && (
-                            <p className={styles.date}>({item.date})</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : section.type === 'text' ? (
-                    <p className={styles.text}>{section.content}</p>
-                  ) : null}
-                </Section>
+                            {item.date && (
+                              <p className={styles.date}>({item.date})</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : section.type === 'text' ? (
+                      <p className={styles.text}>{section.content}</p>
+                    ) : null}
+                  </Section>
+                  {index === 0 && (
+                    <motion.a
+                      className={styles.profileLink}
+                      href="https://x.com/imuratalpay"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                    >
+                      x.com/<strong>imuratalpay</strong>
+                    </motion.a>
+                  )}
+                </>
               ))}
         </motion.main>
       </Container>
