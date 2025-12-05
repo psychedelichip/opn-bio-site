@@ -13,9 +13,29 @@
       "type": "list",
       "items": [
         {
-          "title": "Freelance Designer",
-          "description": "Product design and design engineering.",
-          "date": "2024–Present"
+          "title": "Widelab",
+          "description": "Product Designer",
+          "date": "2023"
+        },
+        {
+          "title": "Artboard Studio",
+          "description": "Product Designer",
+          "date": "2022"
+        },
+        {
+          "title": "Teknasyon",
+          "description": "Product Designer",
+          "date": "2021"
+        },
+        {
+          "title": "Superfat",
+          "description": "UI Designer, UX Researcher",
+          "date": "2020"
+        },
+        {
+          "title": "Goodsted",
+          "description": "Product Designer",
+          "date": "2019"
         }
       ]
     }
