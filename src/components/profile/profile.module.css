@@ -147,15 +147,17 @@
   padding: 40px 0 60px;
 
   & .name {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.9375rem; /* 15px */
     font-weight: 500; /* Medium */
+    line-height: 1.5rem; /* 24px */
     color: #FFFFFF; /* Başlık beyaz */
   }
 
   & .description {
     margin-top: 4px;
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.9375rem; /* 15px */
     font-weight: 400; /* Regular */
+    line-height: 1.5rem; /* 24px */
     color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
   }
 
@@ -247,16 +249,17 @@
     column-gap: 20px;
     align-items: center;
     margin-bottom: 4px; /* 4px boşluk */
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.9375rem; /* 15px */
     font-weight: 500; /* Medium */
+    line-height: 1.5rem; /* 24px */
     color: #FFFFFF; /* Başlık beyaz */
   }
 
   & > .content {
     & .text {
-      font-size: 0.875rem; /* 14px */
+      font-size: 0.9375rem; /* 15px */
       font-weight: 400; /* Regular */
-      line-height: 1.6;
+      line-height: 1.5rem; /* 24px */
       color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
   }
@@ -292,8 +295,9 @@
     }
 
     & .title {
-      font-size: 0.875rem; /* 14px */
+      font-size: 0.9375rem; /* 15px */
       font-weight: 500; /* Medium */
+      line-height: 1.5rem; /* 24px */
       color: #FFFFFF; /* Başlık beyaz */
 
       &a {
@@ -324,16 +328,17 @@
 
     & .date {
       margin-top: 4px;
-      font-size: 0.875rem; /* 14px */
+      font-size: 0.9375rem; /* 15px */
       font-weight: 400; /* Regular */
+      line-height: 1.5rem; /* 24px */
       color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
 
     & .description {
       margin-top: 4px;
-      font-size: 0.875rem; /* 14px */
+      font-size: 0.9375rem; /* 15px */
       font-weight: 400; /* Regular */
-      line-height: 1.6;
+      line-height: 1.5rem; /* 24px */
       color: rgba(255, 255, 255, 0.35); /* Beyaz %35 opacity */
     }
   }
